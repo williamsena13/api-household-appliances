@@ -1,0 +1,218 @@
+{
+  "__export_format": 3,
+  "__export_date": "2023-08-12T00:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2021.5.0",
+  "resources": [
+    {
+      "_id": "req_1",
+      "type": "request",
+      "parentId": "fld_0",
+      "created": 1677649426097,
+      "modified": 1677776617392,
+      "url": "{{base_url}}/api/bands",
+      "name": "Listar Todas as Marcas",
+      "method": "GET",
+      "headers": [],
+      "body": {},
+      "parameters": [],
+      "authentication": {},
+      "metaSortKey": -1677776617392
+    },
+    {
+      "_id": "req_2",
+      "type": "request",
+      "parentId": "fld_0",
+      "created": 1677649426104,
+      "modified": 1677776634829,
+      "url": "{{base_url}}/api/bands",
+      "name": "Criar Nova Marca",
+      "method": "POST",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "text": "{\"name\":\"Nova Marca\",  \"descricao\": \"Descrição da nova marca\",  \"status\": 1}"
+      },
+      "parameters": [],
+      "authentication": {},
+      "metaSortKey": -1677776634829
+    },
+    {
+      "_id": "req_3",
+      "type": "request",
+      "parentId": "fld_0",
+      "created": 1677649426122,
+      "modified": 1677776652937,
+      "url": "{{base_url}}/api/bands/:id",
+      "name": "Mostrar Detalhes da Marca",
+      "method": "GET",
+      "headers": [],
+      "body": {},
+      "parameters": [
+        {
+          "name": "id",
+          "value": "1"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1677776652937
+    },
+    {
+      "_id": "req_4",
+      "type": "request",
+      "parentId": "fld_0",
+      "created": 1677649426134,
+      "modified": 1677776670697,
+      "url": "{{base_url}}/api/bands/:id",
+      "name": "Atualizar Marca",
+      "method": "PUT",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "text": "{  \"name\": \"Marca Atualizada\",  \"descricao\": \"Nova descrição da marca\",  \"status\": 0}"
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "value": "1"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1677776670697
+    },
+    {
+      "_id": "req_5",
+      "type": "request",
+      "parentId": "fld_0",
+      "created": 1677649426144,
+      "modified": 1677776687696,
+      "url": "{{base_url}}/api/bands/:id",
+      "name": "Excluir Marca",
+      "method": "DELETE",
+      "headers": [],
+      "body": {},
+      "parameters": [
+        {
+          "name": "id",
+          "value": "1"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1677776687696
+    },
+    {
+      "_id": "req_6",
+      "type": "request",
+      "parentId": "fld_0",
+      "created": 1677649426152,
+      "modified": 1677776704311,
+      "url": "{{base_url}}/api/products",
+      "name": "Listar Todos os Produtos",
+      "method": "GET",
+      "headers": [],
+      "body": {},
+      "parameters": [],
+      "authentication": {},
+      "metaSortKey": -1677776704311
+    },
+    {
+      "_id": "req_7",
+      "type": "request",
+      "parentId": "fld_0",
+      "created": 1677649426161,
+      "modified": 1677776720915,
+      "url": "{{base_url}}/api/products",
+      "name": "Criar Novo Produto",
+      "method": "POST",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "text": "{  \"codigo\": \"PROD123\",  \"nome\": \"Novo Produto\",  \"descricao\": \"Descrição do novo produto\",  \"tensao\": 220,\n  \"brand_id\": 1\n}"
+      },
+      "parameters": [],
+      "authentication": {},
+      "metaSortKey": -1677776720915
+    },
+    {
+      "_id": "req_8",
+      "type": "request",
+      "parentId": "fld_0",
+      "created": 1677649426174,
+      "modified": 1677776739244,
+      "url": "{{base_url}}/api/products/:id",
+      "name": "Mostrar Detalhes do Produto",
+      "method": "GET",
+      "headers": [],
+      "body": {},
+      "parameters": [
+        {
+          "name": "id",
+          "value": "1"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1677776739244
+    },
+    {
+      "_id": "req_9",
+      "type": "request",
+      "parentId": "fld_0",
+      "created": 1677649426183,
+      "modified": 1677776757352,
+      "url": "{{base_url}}/api/products/:id",
+      "name": "Atualizar Produto",
+      "method": "PUT",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "text": "{\n  \"codigo\": \"PROD456\",\n  \"nome\": \"Produto Atualizado\",\n  \"descricao\": \"Nova descrição do produto\",\n  \"tensao\": 110,\n  \"brand_id\": 2\n}"
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "value": "1"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1677776757352
+    },
+    {
+      "_id": "req_10",
+      "type": "request",
+      "parentId": "fld_0",
+      "created": 1677649426191,
+      "modified": 1677776774890,
+      "url": "{{base_url}}/api/products/:id",
+      "name": "Excluir Produto",
+      "method": "DELETE",
+      "headers": [],
+      "body": {},
+      "parameters": [
+        {
+          "name": "id",
+          "value": "1"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1677776774890
+    }
+  ],
+  "settings": {
+    "base_url": "http://api-household-appliances.test/"
+  }
+}

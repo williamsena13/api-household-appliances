@@ -119,6 +119,10 @@ A API deve oferecer as seguintes funcionalidades:
 
 4. Acesse a aplicação através de `http://localhost:8080`.
 
+5. Teste através de requisições HTTP estão disponívis no arquivo ```http-teste-household-appliances.json```.
+
+Certifique-se de que a variável `base_url` esteja configurada de acordo com o endereço da sua aplicação. Importe esse conteúdo para o Insomnia e você terá todas as requisições configuradas para testar a aplicação.
+
 ### Diferenciais Técnicos
 
 O desenvolvedor pode implementar os seguintes diferenciais técnicos:
@@ -134,3 +138,7 @@ O desenvolvedor pode implementar os seguintes diferenciais técnicos:
 Em caso de dúvidas ou problemas com o projeto, entre em contato com o desenvolvedor **williamsena13** através do email: william@bassena.com.br
 
 **Observação:** A autenticação da API não é avaliada neste teste. Certifique-se de que o código esteja organizado, siga os padrões e atenda aos requisitos descritos para ter uma avaliação positiva. Boa sorte!
+
+
+
+

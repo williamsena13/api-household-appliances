@@ -15,7 +15,7 @@ class BandRequest extends FormRequest
     {
         return [
             'name' => 'required|unique:bands,name,' . ($this->band ? $this->band->id : ''),
-            'descricao' => 'nullable',
+            'description' => 'nullable',
             'status' => 'required|integer',
         ];
     }
