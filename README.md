@@ -1,66 +1,136 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Teste Desenvolvedor Fullstack (PHP) - Projeto EletroAPI
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este é um projeto desenvolvido por **[Williamsena13](https://williamsena13.github.io)** que consiste em uma aplicação Fullstack utilizando o framework Laravel 10 para o Backend e VueJS para o Frontend. O objetivo é criar uma pequena API para cadastro de eletrodomésticos, permitindo a criação, listagem, edição e remoção de registros, além de uma aplicação frontend para interagir com essa API.
 
-## About Laravel
+### Backend
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+#### Requisitos Técnicos
+- Linguagem de programação: PHP 8.1 ou superior
+- Framework: Laravel 10
+- Banco de dados: Relacional (a escolha )
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+#### Funcionalidades
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+A API deve oferecer as seguintes funcionalidades:
 
-## Learning Laravel
+- Criação de um novo eletrodoméstico com os seguintes campos:
+  - Nome
+  - Descrição
+  - Tensão
+  - Marca
+- Listagem de eletrodomésticos cadastrados.
+- Edição de um eletrodoméstico existente.
+- Remoção de um eletrodoméstico.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+#### Configuração e Uso
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1. Clone o repositório do projeto:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+   ```
+   git clone https://github.com/williamsena13/api-household-appliances
+   ```
 
-## Laravel Sponsors
+2. Instale as dependências do Laravel:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+   ```
+   composer install
+   ```
 
-### Premium Partners
+3. Configure as informações do banco de dados no arquivo `.env`.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+4. Execute as migrações para criar as tabelas no banco de dados:
 
-## Contributing
+   ```
+   php artisan migrate
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5. Inicie o servidor local:
 
-## Code of Conduct
+   ```
+   php artisan serve
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+6. Acesse a API através de `http://localhost:8000`.
 
-## Security Vulnerabilities
+#### Exemplos de Requisições
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- Criar um novo eletrodoméstico:
+  ```
+  POST /api/eletrodomesticos
+  {
+    "nome": "Geladeira Frost Free",
+    "descricao": "Este produto é totalmente versátil...",
+    "tensao": "220v",
+    "marca": "Electrolux"
+  }
+  ```
 
-## License
+- Listar todos os eletrodomésticos:
+  ```
+  GET /api/eletrodomesticos
+  ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- Editar um eletrodoméstico existente:
+  ```
+  PUT /api/eletrodomesticos/{id}
+  {
+    "nome": "Nova Geladeira Frost Free",
+    "descricao": "Descrição atualizada...",
+    "tensao": "110v",
+    "marca": "Brastemp"
+  }
+  ```
+
+- Remover um eletrodoméstico:
+  ```
+  DELETE /api/eletrodomesticos/{id}
+  ```
+
+### Frontend
+
+#### Requisitos Técnicos
+
+- Framework JavaScript: VueJS (ou outro framework de sua escolha)
+
+#### Funcionalidades
+
+- Interface que permite ao usuário interagir com a API Backend.
+- Exibir mensagens de erro, aviso e alerta para orientar o usuário.
+
+#### Configuração e Uso
+
+1. Acesse o diretório do projeto frontend:
+
+   ```
+   cd nome-do-diretorio-frontend
+   ```
+
+2. Instale as dependências do VueJS:
+
+   ```
+   npm install
+   ```
+
+3. Inicie o servidor de desenvolvimento:
+
+   ```
+   npm run serve
+   ```
+
+4. Acesse a aplicação através de `http://localhost:8080`.
+
+### Diferenciais Técnicos
+
+O desenvolvedor pode implementar os seguintes diferenciais técnicos:
+
+- VueX para gerenciamento de estado.
+- VueRouter para navegação.
+- Testes unitários e de integração.
+- Implementação de GraphQL.
+- Uso de Docker para facilitar a implantação.
+
+### Contato
+
+Em caso de dúvidas ou problemas com o projeto, entre em contato com o desenvolvedor **williamsena13** através do email: william@bassena.com.br
+
+**Observação:** A autenticação da API não é avaliada neste teste. Certifique-se de que o código esteja organizado, siga os padrões e atenda aos requisitos descritos para ter uma avaliação positiva. Boa sorte!
