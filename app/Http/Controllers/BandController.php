@@ -2,43 +2,65 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Band;
 use App\Http\Requests\BandRequest;
 use App\Http\Resources\BandResource;
+use App\Services\BandService;
+use App\Helpers\ApiResponse;
+use Illuminate\Http\Request;
 
 class BandController extends Controller
 {
+    protected $bandService;
+
+    public function __construct(BandService $bandService)
+    {
+        $this->bandService = $bandService;
+    }
+
     public function index()
     {
-        $bands = Band::all();
-        return BandResource::collection($bands);
+        $bands = $this->bandService->getAllBands();
+        return ApiResponse::success(BandResource::collection($bands),  __('api.band_list'));
     }
 
     public function store(BandRequest $request)
     {
-        try {
-            $band = Band::create($request->validated());
-            return response()->json(new BandResource($band));
-        } catch (\Exception $e) {
-            return response()->json(['err' => $e->getMessage(), 'e' => $e], 500);
+        $data = $request->validated();
+        $band = $this->bandService->createBand($data);
+        return ApiResponse::success(new BandResource($band), __('api.band_created'));
+    }
+
+    public function show($id)
+    {
+        $band = $this->bandService->findBand($id);
+
+        if (!$band) {
+            return ApiResponse::error(__('api.band_not_found'), 404);
         }
-        
+
+        return ApiResponse::success(new BandResource($band), __('api.band_found'));
     }
 
-    public function show(Band $band)
+    public function update(BandRequest $request, $id)
     {
-        return new BandResource($band);
+        $data = $request->validated();
+        $band = $this->bandService->updateBand($id, $data);
+
+        if (!$band) {
+            return ApiResponse::error(__('api.band_not_found'), 404);
+        }
+
+        return ApiResponse::success(new BandResource($band), __('api.band_updated'));
     }
 
-    public function update(BandRequest $request, Band $band)
+    public function destroy($id)
     {
-        $band->update($request->validated());
-        return new BandResource($band);
-    }
+        $result = $this->bandService->deleteBand($id);
 
-    public function destroy(Band $band)
-    {
-        $band->delete();
-        return response()->noContent();
+        if (!$result) {
+            return ApiResponse::error(__('api.band_not_found'), 404);
+        }
+
+        return ApiResponse::success(null, __('api.band_deleted'));
     }
 }
