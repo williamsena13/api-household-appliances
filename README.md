@@ -1,3 +1,4 @@
+
 ## Teste Desenvolvedor Fullstack (PHP) - Projeto EletroAPI
 
 Este é um projeto desenvolvido por **[Williamsena13](https://williamsena13.github.io)** que consiste em uma aplicação Fullstack utilizando o framework Laravel 10 para o Backend e VueJS para o Frontend. O objetivo é criar uma pequena API para cadastro de eletrodomésticos, permitindo a criação, listagem, edição e remoção de registros, além de uma aplicação frontend para interagir com essa API.
@@ -44,101 +45,63 @@ A API deve oferecer as seguintes funcionalidades:
    php artisan migrate
    ```
 
-5. Inicie o servidor local:
+5. Execute os seeders para popular o banco de dados com dados de teste:
+
+   ```
+   php artisan db:seed
+   ```
+
+6. Inicie o servidor local:
 
    ```
    php artisan serve
    ```
 
-6. Acesse a API através de `http://localhost:8000`.
-
-#### Exemplos de Requisições
-
-- Criar um novo eletrodoméstico:
-  ```
-  POST /api/eletrodomesticos
-  {
-    "nome": "Geladeira Frost Free",
-    "descricao": "Este produto é totalmente versátil...",
-    "tensao": "220v",
-    "marca": "Electrolux"
-  }
-  ```
-
-- Listar todos os eletrodomésticos:
-  ```
-  GET /api/eletrodomesticos
-  ```
-
-- Editar um eletrodoméstico existente:
-  ```
-  PUT /api/eletrodomesticos/{id}
-  {
-    "nome": "Nova Geladeira Frost Free",
-    "descricao": "Descrição atualizada...",
-    "tensao": "110v",
-    "marca": "Brastemp"
-  }
-  ```
-
-- Remover um eletrodoméstico:
-  ```
-  DELETE /api/eletrodomesticos/{id}
-  ```
+7. Acesse a API através de `http://localhost:8000`.
 
 ### Frontend
 
-#### Requisitos Técnicos
+...
 
-- Framework JavaScript: VueJS (ou outro framework de sua escolha)
+### Deploy
 
-#### Funcionalidades
+Para realizar o deploy da aplicação Laravel em um ambiente de produção, siga as etapas abaixo:
 
-- Interface que permite ao usuário interagir com a API Backend.
-- Exibir mensagens de erro, aviso e alerta para orientar o usuário.
+1. Configuração do Ambiente de Produção
 
-#### Configuração e Uso
+   Certifique-se de que o servidor de produção atenda aos requisitos técnicos mencionados anteriormente, como a versão do PHP e outras dependências.
 
-1. Acesse o diretório do projeto frontend:
+2. Configuração do Ambiente
 
-   ```
-   cd nome-do-diretorio-frontend
-   ```
+   - Configure o arquivo `.env` no servidor de produção com as informações de conexão com o banco de dados e outras configurações específicas.
+   - Certifique-se de definir a variável `APP_ENV` como `production` no `.env`.
 
-2. Instale as dependências do VueJS:
+3. Publicação da Aplicação
 
-   ```
-   npm install
-   ```
+   - Faça o upload dos arquivos da aplicação Laravel para o servidor de produção, geralmente usando `git` ou um método seguro de transferência de arquivos.
+   - Configure o servidor da web (por exemplo, Apache, Nginx) para apontar para o diretório `public` do projeto Laravel.
 
-3. Inicie o servidor de desenvolvimento:
+4. Atualização de Dependências
 
-   ```
-   npm run serve
-   ```
+   - Acesse o diretório da aplicação no servidor e execute `composer install --optimize-autoloader --no-dev` para instalar as dependências e otimizar o autoloader.
 
-4. Acesse a aplicação através de `http://localhost:8080`.
+5. Geração de Chave de Criptografia
 
-5. Teste através de requisições HTTP estão disponívis no arquivo ```http-teste-household-appliances.json```.
+   - Execute `php artisan key:generate` no servidor para gerar uma nova chave de criptografia para a aplicação.
 
-Certifique-se de que a variável `base_url` esteja configurada de acordo com o endereço da sua aplicação. Importe esse conteúdo para o Insomnia e você terá todas as requisições configuradas para testar a aplicação.
+6. Cache e Otimizações
 
-### Diferenciais Técnicos
+   - Execute `php artisan config:cache` e `php artisan route:cache` para otimizar a configuração e cache de rotas.
+   - Execute `php artisan optimize` para outras otimizações.
 
-O desenvolvedor pode implementar os seguintes diferenciais técnicos:
+7. Configuração do Servidor Web
 
-- VueX para gerenciamento de estado.
-- VueRouter para navegação.
-- Testes unitários e de integração.
-- Implementação de GraphQL.
-- Uso de Docker para facilitar a implantação.
+   - Configure o servidor web para direcionar as solicitações para o aplicativo Laravel. Certifique-se de configurar as regras de reescrita (por exemplo, `.htaccess` no Apache) corretamente.
 
-### Contato
+8. SSL (Opcional, mas recomendado)
 
-Em caso de dúvidas ou problemas com o projeto, entre em contato com o desenvolvedor **williamsena13** através do email: william@bassena.com.br
+   - Configure o SSL no servidor de produção para garantir a segurança das comunicações.
 
-**Observação:** A autenticação da API não é avaliada neste teste. Certifique-se de que o código esteja organizado, siga os padrões e atenda aos requisitos descritos para ter uma avaliação positiva. Boa sorte!
+9. Acesse a Aplicação
 
-
-
-
+   - Acesse a aplicação através do domínio ou endereço IP do servidor.

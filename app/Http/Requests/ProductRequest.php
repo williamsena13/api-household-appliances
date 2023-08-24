@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Helpers\ApiResponse;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class ProductRequest extends FormRequest
 {
@@ -13,12 +15,24 @@ class ProductRequest extends FormRequest
 
     public function rules()
     {
-        return [
-            'code' => 'required|unique:products,code,' . ($this->product ? $this->product->id : ''),
+        $productId = optional($this->product)->id;
+
+        $rules = [
             'name' => 'required',
             'description' => 'nullable',
             'voltage' => 'nullable|integer',
             'brand_id' => 'required|exists:bands,id',
         ];
+        if ($this->isMethod('post')) {
+            $rules['code'] = 'required|unique:products,code,' . $productId;
+        }
+        return $rules;
+    }
+
+    public function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
+    {
+        throw new HttpResponseException(
+            ApiResponse::error($validator->errors()->first(), 422)
+        );
     }
 }
