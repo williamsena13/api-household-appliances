@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Band;
+use App\Models\Brand;
 
 class BandRepository
 {

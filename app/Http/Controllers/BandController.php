@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\BandRequest;
 use App\Http\Resources\BandResource;
 use App\Services\BandService;
-use App\Helpers\ApiResponse;
+use App\Responses\ApiResponse;
 use Illuminate\Http\Request;
 
 class BandController extends Controller

@@ -3,8 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Helpers\ApiResponse;
+use App\Responses\ApiResponse;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use App\Http\Requests\ApiResponse;
+use Illuminate\Contracts\Validation\Validator;
 
 class ProductRequest extends FormRequest
 {
@@ -29,10 +31,8 @@ class ProductRequest extends FormRequest
         return $rules;
     }
 
-    public function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
+    public function failedValidation(Validator $validator)
     {
-        throw new HttpResponseException(
-            ApiResponse::error($validator->errors()->first(), 422)
-        );
+        throw new ApiResponse::error($validator->errors()->first(), 422);
     }
 }
